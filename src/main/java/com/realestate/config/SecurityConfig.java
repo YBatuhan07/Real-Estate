@@ -1,5 +1,6 @@
 package com.realestate.config;
 
+import com.realestate.handler.AuthEntryPoint;
 import com.realestate.jwt.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,13 +18,15 @@ public class SecurityConfig {
 
     public static final String REGISTER = "/register";
     public static final String AUTHENTICATE = "/authenticate";
-    public static final String REFRESH_TOKEN = "/refresh_token";
+    public static final String REFRESH_TOKEN = "/refreshToken";
 
     @Autowired
     private AuthenticationProvider authenticationProvider;
 
     @Autowired
-    public JwtAuthenticationFilter jwtAuthenticationFilter;
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+    @Autowired
+    private AuthEntryPoint authEntryPoint;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -32,6 +35,7 @@ public class SecurityConfig {
                         request.requestMatchers(REGISTER,AUTHENTICATE,REFRESH_TOKEN).permitAll()
                                 .anyRequest()
                                 .authenticated())
+                .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
