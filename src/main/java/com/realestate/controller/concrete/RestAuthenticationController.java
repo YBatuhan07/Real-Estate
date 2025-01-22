@@ -1,5 +1,8 @@
-package com.realestate.controller;
+package com.realestate.controller.concrete;
 
+import com.realestate.controller.IRestAuthenticationController;
+import com.realestate.controller.RestBaseController;
+import com.realestate.controller.RootEntity;
 import com.realestate.dto.AuthRequest;
 import com.realestate.dto.AuthResponse;
 import com.realestate.dto.DtoUser;
