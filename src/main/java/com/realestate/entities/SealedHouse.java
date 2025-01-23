@@ -20,5 +20,4 @@ public class SealedHouse extends BaseEntity {
     private House house;
     @ManyToOne
     private Customer customer;
-
 }
