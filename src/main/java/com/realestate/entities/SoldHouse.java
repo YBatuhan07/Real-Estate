@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"realEstateAgent","house","customer"})})
 @NoArgsConstructor
 @AllArgsConstructor
-public class SealedHouse extends BaseEntity {
+public class SoldHouse extends BaseEntity {
 
     @ManyToOne
     private RealEstateAgent realEstateAgent;

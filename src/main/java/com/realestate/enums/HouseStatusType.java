@@ -1,7 +1,7 @@
 package com.realestate.enums;
 
 public enum HouseStatusType {
-    SALED,
+    SOLD,
     SALABLE,
     RENTAL
 

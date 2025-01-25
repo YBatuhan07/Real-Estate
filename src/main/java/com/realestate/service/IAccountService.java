@@ -5,4 +5,5 @@ import com.realestate.dto.DtoAccountIU;
 
 public interface IAccountService {
     public DtoAccount saveAccount(DtoAccountIU dtoAccountIU);
+
 }
